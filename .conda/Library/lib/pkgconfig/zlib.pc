@@ -1,0 +1,13 @@
+prefix=c:/Users/park_younguk/Desktop/Machine_Learning/.conda/Library
+exec_prefix=c:/Users/park_younguk/Desktop/Machine_Learning/.conda/Library
+libdir=c:/Users/park_younguk/Desktop/Machine_Learning/.conda/Library/lib
+sharedlibdir=c:/Users/park_younguk/Desktop/Machine_Learning/.conda/Library/lib
+includedir=c:/Users/park_younguk/Desktop/Machine_Learning/.conda/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.3.1
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
