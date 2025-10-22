@@ -1,6 +1,4 @@
 import pandas as pd
-import pathlib
-import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text  import TfidfVectorizer
@@ -13,8 +11,12 @@ from sklearn.metrics import  accuracy_score, classification_report
 
 df = pd.read_csv("data/mtsamples.csv")
 
+
+df = df.dropna(subset=["transcription", "medical_specialty"])   #결측값 제거
+
 x_train, x_test, y_train, y_test = train_test_split(
-    df["transcription"], df["medical_specialty"],test_size=0.2,random_state=42)
+    df["transcription"], df["medical_specialty"],test_size=0.2,random_state=42
+)
 
 
 vectorizer = TfidfVectorizer(max_features=5000, stop_words="english")
@@ -22,7 +24,7 @@ Xtr = vectorizer.fit_transform(x_train)
 Xte = vectorizer.transform(x_test)
 
 svm_model = SVC(kernel = "linear")
-svm_model.fit(x_train, y_train)
+svm_model.fit(Xtr, y_train)
 pred = svm_model.predict(Xte)
 
 print("TF-IDF + SVM 정확도:", round(accuracy_score(y_test, pred), 3))
