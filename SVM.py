@@ -20,5 +20,6 @@ svm_model = SVC(kernel="linear")
 svm_model.fit(Xtr, y_train)
 pred = svm_model.predict(Xte)
 
+
 print("TF-IDF + SVM 정확도:", round(accuracy_score(y_test, pred), 3))
 print(classification_report(y_test, pred))
